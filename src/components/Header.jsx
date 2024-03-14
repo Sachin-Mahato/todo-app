@@ -1,12 +1,22 @@
-import React, { useContext } from "react";
-import moon from "../images/icon-moon.svg"
-import TodoContext from "../Context/TodoContext";
+import React, { useContext, useState } from "react";
+import moon from "../images/icon-moon.svg";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../features/todo/todoSlice";
 
 const Header = () => {
-  const {text, addTask, setText} = useContext(TodoContext);
+  const [input, setInput] = useState("");
+  const dispatch = useDispatch();
+
   const handleChange = (e) => {
-    setText(e.target.value)
-  }
+    setInput(e.target.value);
+  };
+  const addTodoHandler = (e) => {
+    if (e.code === "Enter") {
+      dispatch(addTodo(input));
+      setInput("");
+    }
+  };
+
   return (
     <>
       <header className="flex flex-col justify-center gap-8 px-8 align-middle  bg-[url(./images/bg-desktop-light.jpg)] bg-no-repeat h-[30dvh] bg-top">
@@ -22,9 +32,9 @@ const Header = () => {
             type="text"
             placeholder="Create a new todo.."
             className="w-full py-4 px-4 text-left rounded-md placeholder:font-[500] indent-6"
-            value={text}
+            value={input}
             onChange={handleChange}
-            onKeyDown={addTask}
+            onKeyDown={addTodoHandler}
           />
         </div>
       </header>

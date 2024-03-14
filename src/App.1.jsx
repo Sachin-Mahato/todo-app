@@ -1,15 +1,12 @@
-import Header from "./components/Header"
 import { StatusBar } from "./components/StatusBar";
 import TodoList from "./components/TodoList";
 
-function App() {
+export function App() {
   return (
     <>
-    <Header />
-    <TodoList />
-    <StatusBar />
+      <Header />
+      <TodoList />
+      <StatusBar />
     </>
   );
 }
-
-export default App;
