@@ -1,14 +1,20 @@
 
 import { useSelector, useDispatch } from "react-redux";
-import { removeTodo } from "../features/todo/todoSlice";
+import { removeTodo, toggleComplete } from "../features/todo/todoSlice";
 import check from "../images/icon-check.svg"
 
 const TodoList = () => {
   const todos = useSelector(state => state.todos)
   const dispatch = useDispatch()
+  const todoCount = useSelector(state => state.todoCount)
+    
+  const handleToggleComplete = (id) => {
+    dispatch(toggleComplete({id: id}))
+  }
+
   return (
     <>
-      <section className="h-[50vh]  bg-light-gray rounded-smh-[50vh] shadow-xl w-[87%] z-[1] mx-auto relative top-[-30px] rounded-md">
+      <section className="h-[50vh]  bg-light-gray  shadow-xl w-[84%] z-[1] mx-auto relative top-[-30px] rounded-md">
         <ul className="px-4">
           {todos.map((todo) => (
             <div
@@ -18,6 +24,7 @@ const TodoList = () => {
               <div className="flex gap-2 py-2  ">
                 <li
                   className=" w-5 h-5 mt-4 border-[1px] cursor-pointer  border-grayish-blue-lt hover:bg-gradient-to-b from-hsl(192, 100%, 76%) to-hsl(280, 87%, 65%)  rounded-full "
+                  onClick={() => handleToggleComplete(todo.id)}
                   style={{
                     background: todo.completed
                       ? "linear-gradient(to bottom, hsl(192, 100%, 76%), hsl(280,87%,65%))"
@@ -26,7 +33,6 @@ const TodoList = () => {
                     justifyContent: todo.completed ? "center" : "",
                     alignItems: todo.completed ? "center" : "",
                   }}
-                  // onClick={handleCheck}
                 >
                   <img
                     src={check}
@@ -53,7 +59,7 @@ const TodoList = () => {
             </div>
           ))}
         </ul>
-        <div> items left</div>
+        <div> items left {todoCount}</div>
       </section>
     </>
   );
