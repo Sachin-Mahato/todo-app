@@ -1,13 +1,11 @@
-import Header from "./components/Header"
-import { StatusBar } from "./components/StatusBar";
+import Header from "./components/Header";
 import TodoList from "./components/TodoList";
 
 function App() {
   return (
     <>
-    <Header />
-    <TodoList />
-    <StatusBar />
+      <Header />
+        <TodoList />
     </>
   );
 }

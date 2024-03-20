@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary-blue': 'hsl(0,0%, 0%)',
+        'primary-blue': 'hsl(220, 98%, 61%)',
         'primary-background': 'linear-gradient(to bottom, hsl(192, 100%, 76%), hsl(280,87%,65%))',
         // Light Theme
         'light-gray': 'hsl(0,0%,98%)',

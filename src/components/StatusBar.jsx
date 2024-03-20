@@ -1,12 +1,10 @@
-import React from 'react'
-
 export const StatusBar = () => {
   return (
     <>
-      <section className=" flex gap-2 justify-center align-middle capitalize shadow-xl p-2">
-        <a href="">all</a>
-        <a href="">active</a>
-        <a href="">complete</a>
+      <section className="flex gap-2 justify-center items-center capitalize ">
+        <p className="text-primary-blue cursor-pointer">all</p>
+        <p className="cursor-pointer">active</p>
+        <p className="cursor-pointer">complete</p>
       </section> 
     </>
   )
