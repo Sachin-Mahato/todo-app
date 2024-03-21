@@ -1,12 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
 import { removeTodo, toggleComplete } from "../features/todo/todoSlice";
 import check from "../images/icon-check.svg";
+import { StatusBar } from "./StatusBar";
 import { useState } from "react";
 
 const TodoList = () => {
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
-  const todoCount = useSelector((state) => state.todoCount);
   const [filter, setFilter] = useState("all");
 
   const handleToggleComplete = (id) => {
@@ -29,8 +29,8 @@ const TodoList = () => {
 
   return (
     <>
-      <section className=" bg-light-gray">
-        <ul className="px-4 bg-white w-[84%] sm:max-w-[30rem]  z-[1] mx-auto relative xl:top-[-50px] rounded-md sm:h-[25rem] shadow-xl">
+      <section className=" bg-light-gray dark:bg-slate-900">
+        <ul className=" bg-white w-[84%] px-8 sm:max-w-[30rem]  z-[1] mx-auto relative top-[-20px] sm:top-[-50px] rounded-md sm:h-[25rem] shadow-xl">
           {filterTodo.map((todo) => (
             <div
               key={todo.id}
@@ -73,39 +73,7 @@ const TodoList = () => {
               ></li>
             </div>
           ))}
-          <div className=" relative flex justify-center items-center gap-12 my-2 ">
-            <p className="text-dark-grayish-blue sm:basis-1/3">{todoCount} items left</p>
-            <section className="sm:static w-full sm:px-0 sm:py-0 sm:basis-1/3 py-3 sm:shadow-none absolute top-12 shadow-lg flex gap-6 sm:gap-2 justify-center items-center capitalize">
-              <p
-                className={`cursor-pointer ${
-                  filter === "all" ? "text-primary-blue" : ""
-                }`}
-                onClick={() => handleFilterChange("all")}
-              >
-                all
-              </p>
-              <p
-                className={`cursor-pointer ${
-                  filter === "active" ? "text-primary-blue" : ""
-                }`}
-                onClick={() => handleFilterChange("active")}
-              >
-                active
-              </p>
-              <p
-                className={`cursor-pointer ${
-                  filter === "completed" ? "text-primary-blue" : ""
-                }`}
-                onClick={() => handleFilterChange("completed")}
-              >
-                completed
-              </p>
-            </section>
-
-            <p className="text-dark-grayish-blue capitalize cursor-pointer sm:basis-1/3 hover:text-dark-grayish-very">
-              clear completed
-            </p>
-          </div>
+          <StatusBar filter={filter} handleFilterChange={handleFilterChange} />;
         </ul>
       </section>
     </>

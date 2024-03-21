@@ -21,16 +21,15 @@ export const todoSlice = createSlice({
     },
     removeTodo: (state, action) => {
       state.todos = state.todos.filter((todo) => todo.id !== action.payload)
-      state.todoCount--;
+      if(state.todoCount > 0) {
+        state.todoCount -= 1
+      }
     },
     toggleComplete: (state, action) => {
       const {id} = action.payload;
       const todo = state.todos.find(task => task.id === id);
       if (todo) {
-        todo.completed = !todo.completed;
-        if(todo.completed) {
-          state.todoCount--;
-        }
+        todo.completed = !todo.completed; 
       }
     }
   }
