@@ -16,6 +16,14 @@ export default {
         'grayish-blue-lt': 'hsl(233, 11%, 84%)',
         'dark-grayish-blue': 'hsl(236, 9%, 61%)',
         'dark-grayish-very': 'hsl(235,19%,35%)',
+        // Dark Theme
+        'darkMode-blue': 'hsl( 235, 21%, 11%)',
+        'darkMode-desaturated-blue': 'hsl(235, 24%, 19%)',
+        'darkMode-grayish-blue': 'hsl(234, 39%, 85%)',
+        'darkMOde-grayish-blue-hover': 'hsl(236, 33%, 92%)',
+        'darkMode-dark-grayish-blue': 'hsl(234, 11%, 52%)',
+        'darkMode-very-dark-grayish-blue': 'hsl(233, 14%, 35%)',
+        'darkMode-very-dark-grayish-blue-v2': 'hsl(237, 14%, 26%)'
       },
       fontSize: {
         'body-fs': '1.125rem'

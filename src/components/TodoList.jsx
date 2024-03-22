@@ -4,7 +4,7 @@ import check from "../images/icon-check.svg";
 import { StatusBar } from "./StatusBar";
 import { useState } from "react";
 
-const TodoList = () => {
+const TodoList = ({darkMode}) => {
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
   const [filter, setFilter] = useState("all");
@@ -29,14 +29,14 @@ const TodoList = () => {
 
   return (
     <>
-      <section className=" bg-light-gray dark:bg-slate-900">
-        <ul className=" bg-white w-[84%] px-8 sm:max-w-[30rem]  z-[1] mx-auto relative top-[-20px] sm:top-[-50px] rounded-md sm:h-[25rem] shadow-xl">
+      <section className=" bg-light-gray dark:bg-darkMode-blue dark:text-darkMode-grayish-blue h-[70dvh]">
+        <ul className=" bg-white w-[84%]  sm:max-w-[30rem]  z-[1] mx-auto relative top-[-20px] sm:top-[-50px] rounded-md  sm:h-[25rem] shadow-xl dark:bg-darkMode-desaturated-blue">
           {filterTodo.map((todo) => (
             <div
               key={todo.id}
-              className="flex gap-4 justify-between align-middle border-b-[1px] border-light-grayish-blue pb-2 "
+              className="flex gap-4 justify-between align-middle border-b-[1px] border-light-grayish-blue dark:border-darkMode-very-dark-grayish-blue-v2 pb-2 "
             >
-              <div className="flex gap-2 ">
+              <div className="flex gap-2 ml-6">
                 <li
                   className=" w-5 h-5 mt-4 border-[1px] cursor-pointer  border-grayish-blue-lt hover:bg-gradient-to-b from-hsl(192, 100%, 76%) to-hsl(280, 87%, 65%)  rounded-full "
                   onClick={() => handleToggleComplete(todo.id)}
@@ -55,29 +55,33 @@ const TodoList = () => {
                     style={{
                       width: "10px",
                       height: "10px",
+                      display: todo.completed ? "block" : "none"
                     }}
                   />
                 </li>
                 <li
-                  className="mt-4"
+                  className="mt-4 text-dark-grayish-very dark:text-darkMode-grayish-blue "
                   style={{
                     textDecoration: todo.completed ? "line-through" : "",
+                    color: todo.completed ?(darkMode ? "hsl(234, 11%, 52%)" : "hsl(233, 14%, 35%)"): "",
+                    fontWeight: todo.completed ? "300" : "",
+                    textDecorationThickness: todo.completed ? "0.2px" : ""
                   }}
                 >
                   {todo.text}
                 </li>
               </div>
               <li
-                className=" w-4 h-4 mt-4 py-2  bg-[url(./images/icon-cross.svg)] bg-no-repeat cursor-pointer"
+                className=" w-4 h-4 mr-6 mt-4 py-2  bg-[url(./images/icon-cross.svg)] bg-no-repeat cursor-pointer"
                 onClick={() => dispatch(removeTodo(todo.id))}
               ></li>
             </div>
           ))}
-          <StatusBar filter={filter} handleFilterChange={handleFilterChange} />;
+          <StatusBar filter={filter} handleFilterChange={handleFilterChange} />
         </ul>
       </section>
     </>
-  );
-};
+  )
+}
 
 export default TodoList;

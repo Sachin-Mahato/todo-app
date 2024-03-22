@@ -6,13 +6,15 @@ function App() {
   const [darkMode, setDarkMode] = useState(false)
 
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode)
+    setDarkMode(prevDarkMode => !prevDarkMode)
   }
 
   return (
-    <div className={`${darkMode && "dark"}`}>
-      <Header toggleDarkMode={toggleDarkMode} />
-      <TodoList />
+    <div className={`${darkMode && "dark"} `}>
+      <div className="dark:bg-darkMode-blue">
+      <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
+      <TodoList darkMode={darkMode}/>
+      </div>
     </div>
   );
 }
