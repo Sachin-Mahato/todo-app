@@ -43,5 +43,5 @@ To use the app locally:
 ---
 
 ## Acknowledgments
-- **Inspired by productivity apps and the need for better task management.
-- **Thanks to the open-source community for resources and ideas.
+- **Inspired by productivity apps and the need for better task management**.
+- **Thanks to the open-source community for resources and ideas**.
